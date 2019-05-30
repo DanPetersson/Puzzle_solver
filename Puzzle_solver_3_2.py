@@ -27,13 +27,13 @@ Version 1.0:
 import pathlib
 import os
 import cv2
-import brick_image_functions_3_1 as bif
+import Puzzle_image_lib_3_2.py as bif
 #from matplotlib import pyplot as plt
 
 """ Functions for solving the puzzle"""
 
 def get_input():
-    default_filename = "20190206_114340_small.jpg"
+    default_filename = "Puzzle_pieces.jpg"
     filename = input("Please specify file name for picture input: ")
     if  filename == "":
         filename = default_filename
