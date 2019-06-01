@@ -48,7 +48,7 @@ def find_bricks(img):
     img_edges = cv2.Canny(img_blur_3, 10, 200)
     kernel = np.ones((3, 3), "uint8")
     img_dil = cv2.dilate(img_edges, kernel, iterations=1)
-    #img_dil = cv2.erode(img_dil, kernel, iterations=1)
+#    img_dil = cv2.erode(img_dil, kernel, iterations=1)
 
     cv2.imshow("Edges", img_edges)
 
@@ -93,17 +93,12 @@ def get_medium_img_size(image_list):
         img_width += img_tmp.shape[1]
         img_hight += img_tmp.shape[0]     
 
-#    img_width = img_width // len(image_list)
- #   img_hight = img_hight // len(image_list)
     medium_img_size = int((img_width + img_hight) / 2 / len(image_list))
-#    print("Average Hight:", img_hight, "Width:", img_width, "Size:", img_size)
     return medium_img_size
 
 def resize_images(img_list, size = 150):
     for i in range(len(img_list)):
         img_list[i] = cv2.resize(img_list[i], (size, size))
-#        title = "Image " + str(i)
-#        cv2.imshow(title, img_list[i])
     return img_list
 
 def rotate_brick(img, rotations = 1):
@@ -140,9 +135,6 @@ def top_template_matches(image, template, thresh = 0.8):
 #    methods = ['cv2.TM_CCOEFF', 'cv2.TM_CCOEFF_NORMED', 'cv2.TM_CCORR','cv2.TM_CCORR_NORMED', 'cv2.TM_SQDIFF', 'cv2.TM_SQDIFF_NORMED']
     res = cv2.matchTemplate(image,template,cv2.TM_CCOEFF_NORMED)
     min_val, max_val, min_loc, max_loc = cv2.minMaxLoc(res)
-#    print(res)
-#    print("Max Val:", max_val, "Max Loc:", max_loc)
-#    cv2.imshow("Res matching", res)
     
     max_val = np.around(max_val, decimals=2)
     
